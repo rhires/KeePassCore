@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net60-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <SignAssembly>true</SignAssembly>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Build\KeePassLib\Debug\</OutputPath>
+    <DocumentationFile>..\Build\KeePassLib\Debug\KeePassLib.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Build\KeePassLib\Release\</OutputPath>
+    <DocumentationFile>..\Build\KeePassLib\Release\KeePassLib.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Serialization\IOConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

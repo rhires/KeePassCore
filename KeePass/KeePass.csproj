@@ -1,0 +1,409 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net60-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>KeePass.ico</ApplicationIcon>
+    <AssemblyOriginatorKeyFile>KeePass.pfx</AssemblyOriginatorKeyFile>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Build\KeePass\Debug\</OutputPath>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Build\KeePass\Release\</OutputPath>
+    <DefineConstants></DefineConstants>
+    <DocumentationFile></DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\KeePassLib\Collections\AutoTypeConfig.cs">
+      <Link>KeePassLib\Collections\AutoTypeConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\ProtectedBinaryDictionary.cs">
+      <Link>KeePassLib\Collections\ProtectedBinaryDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\ProtectedBinarySet.cs">
+      <Link>KeePassLib\Collections\ProtectedBinarySet.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\ProtectedStringDictionary.cs">
+      <Link>KeePassLib\Collections\ProtectedStringDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\PwObjectList.cs">
+      <Link>KeePassLib\Collections\PwObjectList.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\PwObjectPool.cs">
+      <Link>KeePassLib\Collections\PwObjectPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\StringDictionaryEx.cs">
+      <Link>KeePassLib\Collections\StringDictionaryEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Collections\VariantDictionary.cs">
+      <Link>KeePassLib\Collections\VariantDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\ChaCha20Cipher.cs">
+      <Link>KeePassLib\Cryptography\Cipher\ChaCha20Cipher.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\ChaCha20Engine.cs">
+      <Link>KeePassLib\Cryptography\Cipher\ChaCha20Engine.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\CipherPool.cs">
+      <Link>KeePassLib\Cryptography\Cipher\CipherPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\CtrBlockCipher.cs">
+      <Link>KeePassLib\Cryptography\Cipher\CtrBlockCipher.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\ICipherEngine.cs">
+      <Link>KeePassLib\Cryptography\Cipher\ICipherEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\Salsa20Cipher.cs">
+      <Link>KeePassLib\Cryptography\Cipher\Salsa20Cipher.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Cipher\StandardAesEngine.cs">
+      <Link>KeePassLib\Cryptography\Cipher\StandardAesEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\CryptoRandom.cs">
+      <Link>KeePassLib\Cryptography\CryptoRandom.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\CryptoRandomStream.cs">
+      <Link>KeePassLib\Cryptography\CryptoRandomStream.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\CryptoStreamEx.cs">
+      <Link>KeePassLib\Cryptography\CryptoStreamEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\CryptoUtil.cs">
+      <Link>KeePassLib\Cryptography\CryptoUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\HashingStreamEx.cs">
+      <Link>KeePassLib\Cryptography\HashingStreamEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\Hash\Blake2b.cs">
+      <Link>KeePassLib\Cryptography\Hash\Blake2b.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\HmacOtp.cs">
+      <Link>KeePassLib\Cryptography\HmacOtp.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\AesKdf.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\AesKdf.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\AesKdf.GCrypt.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\AesKdf.GCrypt.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\Argon2Kdf.Core.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\Argon2Kdf.Core.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\Argon2Kdf.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\Argon2Kdf.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\KdfEngine.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\KdfEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\KdfParameters.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\KdfParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\KeyDerivation\KdfPool.cs">
+      <Link>KeePassLib\Cryptography\KeyDerivation\KdfPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\CharSetBasedGenerator.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\CharSetBasedGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\CustomPwGenerator.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\CustomPwGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\CustomPwGeneratorPool.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\CustomPwGeneratorPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\PatternBasedGenerator.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\PatternBasedGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\PwCharSet.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\PwCharSet.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\PwGenerator.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\PwGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PasswordGenerator\PwProfile.cs">
+      <Link>KeePassLib\Cryptography\PasswordGenerator\PwProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\PopularPasswords.cs">
+      <Link>KeePassLib\Cryptography\PopularPasswords.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\QualityEstimation.cs">
+      <Link>KeePassLib\Cryptography\QualityEstimation.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Cryptography\SelfTest.cs">
+      <Link>KeePassLib\Cryptography\SelfTest.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Delegates\Handlers.cs">
+      <Link>KeePassLib\Delegates\Handlers.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\IDeepCloneable.cs">
+      <Link>KeePassLib\Interfaces\IDeepCloneable.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\IStatusLogger.cs">
+      <Link>KeePassLib\Interfaces\IStatusLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\IStructureItem.cs">
+      <Link>KeePassLib\Interfaces\IStructureItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\ITimeLogger.cs">
+      <Link>KeePassLib\Interfaces\ITimeLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\IUIOperations.cs">
+      <Link>KeePassLib\Interfaces\IUIOperations.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Interfaces\IXmlSerializerEx.cs">
+      <Link>KeePassLib\Interfaces\IXmlSerializerEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\CompositeKey.cs">
+      <Link>KeePassLib\Keys\CompositeKey.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\IUserKey.cs">
+      <Link>KeePassLib\Keys\IUserKey.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KcpCustomKey.cs">
+      <Link>KeePassLib\Keys\KcpCustomKey.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KcpKeyFile.cs">
+      <Link>KeePassLib\Keys\KcpKeyFile.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KcpKeyFile.Xml.cs">
+      <Link>KeePassLib\Keys\KcpKeyFile.Xml.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KcpPassword.cs">
+      <Link>KeePassLib\Keys\KcpPassword.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KcpUserAccount.cs">
+      <Link>KeePassLib\Keys\KcpUserAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KeyProvider.cs">
+      <Link>KeePassLib\Keys\KeyProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KeyProviderPool.cs">
+      <Link>KeePassLib\Keys\KeyProviderPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KeyValidator.cs">
+      <Link>KeePassLib\Keys\KeyValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\KeyValidatorPool.cs">
+      <Link>KeePassLib\Keys\KeyValidatorPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Keys\UserKeyType.cs">
+      <Link>KeePassLib\Keys\UserKeyType.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\ClipboardU.cs">
+      <Link>KeePassLib\Native\ClipboardU.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\NativeBufferEx.cs">
+      <Link>KeePassLib\Native\NativeBufferEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\NativeLib.cs">
+      <Link>KeePassLib\Native\NativeLib.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\NativeMethods.cs">
+      <Link>KeePassLib\Native\NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\NativeMethods.Unix.cs">
+      <Link>KeePassLib\Native\NativeMethods.Unix.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Native\SimpleStat.cs">
+      <Link>KeePassLib\Native\SimpleStat.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwCustomIcon.cs">
+      <Link>KeePassLib\PwCustomIcon.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwDatabase.cs">
+      <Link>KeePassLib\PwDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwDefs.cs">
+      <Link>KeePassLib\PwDefs.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwDeletedObject.cs">
+      <Link>KeePassLib\PwDeletedObject.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwEntry.cs">
+      <Link>KeePassLib\PwEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwEnums.cs">
+      <Link>KeePassLib\PwEnums.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwGroup.cs">
+      <Link>KeePassLib\PwGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwGroup.Search.cs">
+      <Link>KeePassLib\PwGroup.Search.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\PwUuid.cs">
+      <Link>KeePassLib\PwUuid.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Resources\KLRes.cs">
+      <Link>KeePassLib\Resources\KLRes.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Resources\KLRes.Generated.cs">
+      <Link>KeePassLib\Resources\KLRes.Generated.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Resources\KSRes.Generated.cs">
+      <Link>KeePassLib\Resources\KSRes.Generated.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Security\ProtectedBinary.cs">
+      <Link>KeePassLib\Security\ProtectedBinary.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Security\ProtectedString.cs">
+      <Link>KeePassLib\Security\ProtectedString.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Security\XorredBuffer.cs">
+      <Link>KeePassLib\Security\XorredBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\BinaryReaderEx.cs">
+      <Link>KeePassLib\Serialization\BinaryReaderEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\FileLock.cs">
+      <Link>KeePassLib\Serialization\FileLock.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\FileTransactionEx.cs">
+      <Link>KeePassLib\Serialization\FileTransactionEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\HashedBlockStream.cs">
+      <Link>KeePassLib\Serialization\HashedBlockStream.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\HmacBlockStream.cs">
+      <Link>KeePassLib\Serialization\HmacBlockStream.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\IOConnection.cs">
+      <Link>KeePassLib\Serialization\IOConnection.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\IOConnectionInfo.cs">
+      <Link>KeePassLib\Serialization\IOConnectionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\IocProperties.cs">
+      <Link>KeePassLib\Serialization\IocProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\IocPropertyInfo.cs">
+      <Link>KeePassLib\Serialization\IocPropertyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\IocPropertyInfoPool.cs">
+      <Link>KeePassLib\Serialization\IocPropertyInfoPool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\KdbxFile.cs">
+      <Link>KeePassLib\Serialization\KdbxFile.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\KdbxFile.Read.cs">
+      <Link>KeePassLib\Serialization\KdbxFile.Read.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\KdbxFile.Read.Streamed.cs">
+      <Link>KeePassLib\Serialization\KdbxFile.Read.Streamed.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\KdbxFile.Write.cs">
+      <Link>KeePassLib\Serialization\KdbxFile.Write.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Serialization\OldFormatException.cs">
+      <Link>KeePassLib\Serialization\OldFormatException.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPControlCustomization.cs">
+      <Link>KeePassLib\Translation\KPControlCustomization.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPFormCustomization.cs">
+      <Link>KeePassLib\Translation\KPFormCustomization.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPStringTable.cs">
+      <Link>KeePassLib\Translation\KPStringTable.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPStringTableItem.cs">
+      <Link>KeePassLib\Translation\KPStringTableItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPTranslation.cs">
+      <Link>KeePassLib\Translation\KPTranslation.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Translation\KPTranslationProperties.cs">
+      <Link>KeePassLib\Translation\KPTranslationProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\AppLogEx.cs">
+      <Link>KeePassLib\Utility\AppLogEx.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\GfxUtil.cs">
+      <Link>KeePassLib\Utility\GfxUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\MemUtil.cs">
+      <Link>KeePassLib\Utility\MemUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\MessageService.cs">
+      <Link>KeePassLib\Utility\MessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\MonoWorkarounds.cs">
+      <Link>KeePassLib\Utility\MonoWorkarounds.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\StrUtil.cs">
+      <Link>KeePassLib\Utility\StrUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\TimeUtil.cs">
+      <Link>KeePassLib\Utility\TimeUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\TypeOverridePool.cs">
+      <Link>KeePassLib\Utility\TypeOverridePool.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\UrlUtil.cs">
+      <Link>KeePassLib\Utility\UrlUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\KeePassLib\Utility\XmlUtilEx.cs">
+      <Link>KeePassLib\Utility\XmlUtilEx.cs</Link>
+    </Compile>
+    <Compile Update="UI\ColorButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\ColorMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomContextMenuEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomContextMenuStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomMenuStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomRichTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomToolStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomTreeViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\ImageComboBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\PromptedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\SecureTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\SplitButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\CustomSplitContainerEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\HotKeyControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\QualityProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KeePass.ico" />
+  </ItemGroup>
+  <PropertyGroup />
+</Project>
