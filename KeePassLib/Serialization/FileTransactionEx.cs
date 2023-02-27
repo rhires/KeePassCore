@@ -207,7 +207,6 @@ namespace KeePassLib.Serialization
 			// which we usually don't have and therefore get an exception;
 			// trying to set 'Owner' or 'Group' can result in an
 			// UnauthorizedAccessException; thus we restore 'Access' (DACL) only
-			const AccessControlSections acs = AccessControlSections.Access;
 
 			bool bEfsEncrypted = false;
 			byte[] pbSec = null;
@@ -277,9 +276,8 @@ namespace KeePassLib.Serialization
 				if((pbSec != null) && (pbSec.Length != 0))
 				{
 					FileSecurity sec = new FileSecurity();
-					sec.SetSecurityDescriptorBinaryForm(pbSec, acs);
-
-					File.SetAccessControl(m_iocBase.Path, sec);
+					sec.SetSecurityDescriptorBinaryForm(pbSec, AccessControlSections.Access);
+                    FileSystemAclExtensions.SetAccessControl(new FileInfo(m_iocBase.Path), sec);
 				}
 #endif
 			}

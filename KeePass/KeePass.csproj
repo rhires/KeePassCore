@@ -405,5 +405,10 @@
   <ItemGroup>
     <Content Include="KeePass.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LF.RequestSky" Version="1.1.3" />
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="7.0.1" />
+  </ItemGroup>
   <PropertyGroup />
 </Project>

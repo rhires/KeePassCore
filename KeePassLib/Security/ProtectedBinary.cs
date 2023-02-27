@@ -24,7 +24,6 @@ using System.Threading;
 #if !KeePassUAP
 using System.Security.Cryptography;
 #endif
-
 using KeePassLib.Cryptography;
 using KeePassLib.Cryptography.Cipher;
 using KeePassLib.Native;
@@ -108,10 +107,11 @@ namespace KeePassLib.Security
 				{
 					// BlockSize * 3 in order to test encryption for multiple
 					// blocks, but not introduce a power of 2 as factor
-					byte[] pb = new byte[ProtectedBinary.BlockSize * 3];
+					byte[] pb = new byte[BlockSize * 3];
 					for(int i = 0; i < pb.Length; ++i) pb[i] = (byte)i;
-				
-					ProtectedMemory.Protect(pb, MemoryProtectionScope.SameProcess);
+
+
+                    ProtectedData.Protect(pb, null, DataProtectionScope.LocalMachine);
 
 					for(int i = 0; i < pb.Length; ++i)
 					{
@@ -271,7 +271,7 @@ namespace KeePassLib.Security
 
 			if(ProtectedBinary.ProtectedMemorySupported)
 			{
-				ProtectedMemory.Protect(m_pbData, MemoryProtectionScope.SameProcess);
+				ProtectedData.Protect(m_pbData, null, DataProtectionScope.LocalMachine);
 
 				m_mp = PbMemProt.ProtectedMemory;
 				return;
@@ -300,7 +300,7 @@ namespace KeePassLib.Security
 			if(m_pbData.Length == 0) return;
 
 			if(m_mp == PbMemProt.ProtectedMemory)
-				ProtectedMemory.Unprotect(m_pbData, MemoryProtectionScope.SameProcess);
+				ProtectedData.Unprotect(m_pbData, null, DataProtectionScope.LocalMachine);
 			else if(m_mp == PbMemProt.ChaCha20)
 			{
 				byte[] pbIV = new byte[12];
