@@ -46,8 +46,8 @@ namespace KeePassLib.Cryptography
 	{
 		private ProtectedBinary m_pbEntropyPool = new ProtectedBinary(
 			true, new byte[64]);
-		private RNGCryptoServiceProvider m_rng = new RNGCryptoServiceProvider();
-		private ulong m_uCounter;
+		private readonly RNGCryptoServiceProvider m_rng = new();
+        private ulong m_uCounter;
 		private ulong m_uGeneratedBytesCount = 0;
 
 		private static readonly object g_oSyncRoot = new object();

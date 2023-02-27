@@ -29,6 +29,7 @@ using KeePassLib.Cryptography;
 using KeePassLib.Cryptography.Cipher;
 using KeePassLib.Native;
 using KeePassLib.Utility;
+using System.IO;
 
 #if KeePassLibSD
 using KeePassLibSD;
@@ -109,7 +110,7 @@ namespace KeePassLib.Security
 					// blocks, but not introduce a power of 2 as factor
 					byte[] pb = new byte[ProtectedBinary.BlockSize * 3];
 					for(int i = 0; i < pb.Length; ++i) pb[i] = (byte)i;
-
+				
 					ProtectedMemory.Protect(pb, MemoryProtectionScope.SameProcess);
 
 					for(int i = 0; i < pb.Length; ++i)

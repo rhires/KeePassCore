@@ -17,16 +17,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace KeePass.UI
 {
-	public sealed class ColorMenuItem : MenuItem
+	public sealed class ColorMenuItem : ToolStripMenuItem
 	{
 		private readonly Color m_clr;
 		private readonly int m_qSize;
@@ -42,45 +39,45 @@ namespace KeePass.UI
 			m_qSize = qSize;
 
 			Debug.Assert(this.CanRaiseEvents);
-			this.ShowShortcut = false;
-			this.OwnerDraw = true;
+			//this.ShowShortcut = false;
+			//this.OwnerDraw = true;
 
 			if(AccessibilityEx.Enabled)
 				this.Text = UIUtil.ColorToString(clr);
 		}
 
-		protected override void OnDrawItem(DrawItemEventArgs e)
-		{
-			// base.OnDrawItem(e);
+		//protected override void OnDrawItem(DrawItemEventArgs e)
+		//{
+		//	// base.OnDrawItem(e);
 
-			Graphics g = e.Graphics;
-			Rectangle rectBounds = e.Bounds;
-			Rectangle rectFill = new Rectangle(rectBounds.Left + 2,
-				rectBounds.Top + 2, rectBounds.Width - 4, rectBounds.Height - 4);
+		//	Graphics g = e.Graphics;
+		//	Rectangle rectBounds = e.Bounds;
+		//	Rectangle rectFill = new Rectangle(rectBounds.Left + 2,
+		//		rectBounds.Top + 2, rectBounds.Width - 4, rectBounds.Height - 4);
 
-			bool bFocused = (((e.State & DrawItemState.Focus) != DrawItemState.None) ||
-				((e.State & DrawItemState.Selected) != DrawItemState.None));
+		//	bool bFocused = (((e.State & DrawItemState.Focus) != DrawItemState.None) ||
+		//		((e.State & DrawItemState.Selected) != DrawItemState.None));
 
-			// e.DrawBackground();
-			// e.DrawFocusRectangle();
-			using(SolidBrush sbBack = new SolidBrush(bFocused ?
-				SystemColors.Highlight : SystemColors.Menu))
-			{
-				g.FillRectangle(sbBack, rectBounds);
-			}
+		//	// e.DrawBackground();
+		//	// e.DrawFocusRectangle();
+		//	using(SolidBrush sbBack = new SolidBrush(bFocused ?
+		//		SystemColors.Highlight : SystemColors.Menu))
+		//	{
+		//		g.FillRectangle(sbBack, rectBounds);
+		//	}
 
-			using(SolidBrush sb = new SolidBrush(m_clr))
-			{
-				g.FillRectangle(sb, rectFill);
-			}
-		}
+		//	using(SolidBrush sb = new SolidBrush(m_clr))
+		//	{
+		//		g.FillRectangle(sb, rectFill);
+		//	}
+		//}
 
-		protected override void OnMeasureItem(MeasureItemEventArgs e)
-		{
-			// base.OnMeasureItem(e);
+		//protected override void OnMeasureItem(MeasureItemEventArgs e)
+		//{
+		//	// base.OnMeasureItem(e);
 
-			e.ItemWidth = m_qSize;
-			e.ItemHeight = m_qSize;
-		}
+		//	e.ItemWidth = m_qSize;
+		//	e.ItemHeight = m_qSize;
+		//}
 	}
 }

@@ -231,8 +231,10 @@ namespace KeePassLib.Serialization
 					sStat = SimpleStat.Get(m_iocBase.Path);
 #if !KeePassUAP
 					// May throw with Mono
-					FileSecurity sec = File.GetAccessControl(m_iocBase.Path, acs);
-					if(sec != null) pbSec = sec.GetSecurityDescriptorBinaryForm();
+					//FileSecurity sec = File.GetAccessControl(m_iocBase.Path, acs);
+                    FileSecurity sec = new FileInfo(m_iocBase.Path).GetAccessControl();
+
+                    if (sec != null) pbSec = sec.GetSecurityDescriptorBinaryForm();
 #endif
 				}
 				catch(Exception) { Debug.Assert(NativeLib.IsUnix()); }

@@ -40,8 +40,10 @@ namespace KeePass.Forms
 {
 	public partial class EntropyForm : Form
 	{
-		private SHA256Managed m_h = null;
-		private float m_fBits = 0;
+		//private SHA256Managed m_h = null;
+        private SHA256 m_h = null;
+
+        private float m_fBits = 0;
 
 		private Bitmap m_bmpRandom = null;
 
@@ -86,9 +88,9 @@ namespace KeePass.Forms
 			m_bmpRandom = CreateRandomBitmap(m_picRandom.ClientSize);
 			m_picRandom.Image = m_bmpRandom;
 
-			m_h = new SHA256Managed();
+			m_h = SHA256.Create();
 
-			byte[] pb = Guid.NewGuid().ToByteArray();
+            byte[] pb = Guid.NewGuid().ToByteArray();
 			m_h.TransformBlock(pb, 0, pb.Length, pb, 0);
 
 			UpdateUIState();
