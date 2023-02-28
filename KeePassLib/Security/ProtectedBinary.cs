@@ -427,9 +427,9 @@ namespace KeePassLib.Security
 
 			try
 			{
-				RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+				SHA512 rng = SHA512.Create();
 				byte[] pb = new byte[32];
-				rng.GetBytes(pb);
+				rng.ComputeHash(pb);
 
 				Array.Copy(pb, 0, pbAll, i, 32);
 				i += 32;

@@ -3540,7 +3540,7 @@ namespace KeePass.UI
 
 				if(bOp)
 				{
-					ContextMenu cm = cCtx.ContextMenu;
+					ContextMenuStrip cm = cCtx.ContextMenuStrip;
 					ContextMenuStrip cms = cCtx.ContextMenuStrip;
 
 					if(cms != null) cms.Show(Cursor.Position);
@@ -3551,7 +3551,7 @@ namespace KeePass.UI
 					}
 				}
 
-				UIUtil.SetHandled(e, true);
+                SetHandled(e, true);
 				return true;
 			}
 

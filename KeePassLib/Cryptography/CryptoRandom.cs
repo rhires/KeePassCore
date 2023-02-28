@@ -19,10 +19,8 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 
 #if !KeePassUAP
 using System.Drawing;
@@ -37,16 +35,16 @@ using KeePassLib.Utility;
 
 namespace KeePassLib.Cryptography
 {
-	/// <summary>
-	/// Cryptographically secure pseudo-random number generator.
-	/// The returned values are unpredictable and cannot be reproduced.
-	/// <c>CryptoRandom</c> is a singleton class.
-	/// </summary>
-	public sealed class CryptoRandom
+    /// <summary>
+    /// Cryptographically secure pseudo-random number generator.
+    /// The returned values are unpredictable and cannot be reproduced.
+    /// <c>CryptoRandom</c> is a singleton class.
+    /// </summary>
+    public sealed class CryptoRandom
 	{
 		private ProtectedBinary m_pbEntropyPool = new ProtectedBinary(
 			true, new byte[64]);
-		private readonly RNGCryptoServiceProvider m_rng = new();
+		private readonly RandomNumberGenerator m_rng = RandomNumberGenerator.Create();
         private ulong m_uCounter;
 		private ulong m_uGeneratedBytesCount = 0;
 
@@ -120,7 +118,7 @@ namespace KeePassLib.Cryptography
 #if KeePassLibSD
 				using(SHA256Managed shaNew = new SHA256Managed())
 #else
-				using(SHA512Managed shaNew = new SHA512Managed())
+				using(SHA512 shaNew = SHA512.Create())
 #endif
 				{
 					pbNewData = shaNew.ComputeHash(pbEntropy);
@@ -140,7 +138,7 @@ namespace KeePassLib.Cryptography
 #if KeePassLibSD
 				using(SHA256Managed shaPool = new SHA256Managed())
 #else
-				using(SHA512Managed shaPool = new SHA512Managed())
+				using(SHA512 shaPool = SHA512.Create())
 #endif
 				{
 					byte[] pbNewPool = shaPool.ComputeHash(pbCmp);
@@ -157,7 +155,7 @@ namespace KeePassLib.Cryptography
 
 		private byte[] GetSystemEntropy()
 		{
-			SHA512Managed h = new SHA512Managed();
+			SHA512 h = SHA512.Create();
 			byte[] pb4 = new byte[4];
 			byte[] pb8 = new byte[8];
 
@@ -233,27 +231,25 @@ namespace KeePassLib.Cryptography
 #if KeePassUAP
 				f(DiagnosticsExt.GetProcessEntropy(), true);
 #elif !KeePassLibSD
-				using(Process p = Process.GetCurrentProcess())
-				{
-					fI64(p.Handle.ToInt64());
-					fI32(p.HandleCount);
-					fI32(p.Id);
-					fI64(p.NonpagedSystemMemorySize64);
-					fI64(p.PagedMemorySize64);
-					fI64(p.PagedSystemMemorySize64);
-					fI64(p.PeakPagedMemorySize64);
-					fI64(p.PeakVirtualMemorySize64);
-					fI64(p.PeakWorkingSet64);
-					fI64(p.PrivateMemorySize64);
-					fI64(p.StartTime.ToBinary());
-					fI64(p.VirtualMemorySize64);
-					fI64(p.WorkingSet64);
+                using Process p = Process.GetCurrentProcess();
+                fI64(p.Handle.ToInt64());
+                fI32(p.HandleCount);
+                fI32(p.Id);
+                fI64(p.NonpagedSystemMemorySize64);
+                fI64(p.PagedMemorySize64);
+                fI64(p.PagedSystemMemorySize64);
+                fI64(p.PeakPagedMemorySize64);
+                fI64(p.PeakVirtualMemorySize64);
+                fI64(p.PeakWorkingSet64);
+                fI64(p.PrivateMemorySize64);
+                fI64(p.StartTime.ToBinary());
+                fI64(p.VirtualMemorySize64);
+                fI64(p.WorkingSet64);
 
-					// Not supported in Mono 1.2.6:
-					// fI32(p.SessionId);
-				}
+                // Not supported in Mono 1.2.6:
+                // fI32(p.SessionId);
 #endif
-			}
+            }
 			catch(Exception) { Debug.Assert(NativeLib.IsUnix()); }
 
 			try
@@ -291,8 +287,8 @@ namespace KeePassLib.Cryptography
 
 		private byte[] GenerateRandom256()
 		{
-			if(this.GenerateRandom256Pre != null)
-				this.GenerateRandom256Pre(this, EventArgs.Empty);
+			if(GenerateRandom256Pre != null)
+				GenerateRandom256Pre(this, EventArgs.Empty);
 
 			byte[] pbCmp;
 			lock(m_oSyncRoot)

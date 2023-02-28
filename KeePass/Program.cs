@@ -839,21 +839,9 @@ namespace KeePass
 				string strName = "Global\\" + strBaseName;
 				string strIdentity = Environment.UserDomainName + "\\" +
 					Environment.UserName;
-				MutexSecurity ms = new MutexSecurity();
 
-				MutexAccessRule mar = new MutexAccessRule(strIdentity,
-					MutexRights.FullControl, AccessControlType.Allow);
-				ms.AddAccessRule(mar);
-
-				SecurityIdentifier sid = new SecurityIdentifier(
-					WellKnownSidType.WorldSid, null);
-				mar = new MutexAccessRule(sid, MutexRights.ReadPermissions |
-					MutexRights.Synchronize, AccessControlType.Allow);
-				ms.AddAccessRule(mar);
-
-				bool bCreatedNew;
-				return new Mutex(false, strName, out bCreatedNew, ms);
-			}
+                return new Mutex(false, strName, out bool bCreatedNew);
+            }
 			catch(Exception) { } // Windows 9x and Mono 2.0+ (AddAccessRule) throw
 
 			return null;
@@ -1063,25 +1051,25 @@ namespace KeePass
 		internal static void EnableAssertions(bool bEnable)
 		{
 #if DEBUG
-			Stack<TraceListener[]> s = g_sTraceListeners;
-			if(s == null)
-			{
-				s = new Stack<TraceListener[]>();
-				g_sTraceListeners = s;
-			}
+			//Stack<TraceListener[]> s = g_sTraceListeners;
+			//if(s == null)
+			//{
+			//	s = new Stack<TraceListener[]>();
+			//	g_sTraceListeners = s;
+			//}
 
-			if(bEnable)
-			{
-				Debug.Listeners.Clear();
-				Debug.Listeners.AddRange(s.Pop());
-			}
-			else
-			{
-				TraceListener[] v = new TraceListener[Debug.Listeners.Count];
-				Debug.Listeners.CopyTo(v, 0);
-				s.Push(v);
-				Debug.Listeners.Clear();
-			}
+			//if(bEnable)
+			//{
+			//	Debug.Listeners.Clear();
+			//	Debug.Listeners.AddRange(s.Pop());
+			//}
+			//else
+			//{
+			//	TraceListener[] v = new TraceListener[Debug.Listeners.Count];
+			//	Debug.Listeners.CopyTo(v, 0);
+			//	s.Push(v);
+			//	Debug.Listeners.Clear();
+			//}
 #endif
 		}
 

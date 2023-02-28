@@ -130,17 +130,17 @@ namespace KeePass.UI
 
 			for(int i = 0; i < cColors; ++i)
 			{
-				ColorMenuItem mi = new ColorMenuItem(m_vColors[i], qSize);
+				ColorMenuItem mi = new(m_vColors[i], qSize);
 				mi.Click += this.OnColorMenuItemClick;
 
 				if(((i % nBreakAt) == 0) && (i != 0))
-					mi.Break = true;
+					//mi.Break = true;
 
 				m_lMenuItems.Add(mi);
 			}
 
 			m_ctx = new CustomContextMenuEx();
-			m_ctx.MenuItems.AddRange(m_lMenuItems.ToArray());
+			//m_ctx.MenuItems.AddRange(m_lMenuItems.ToArray());
 			m_ctx.ShowEx(this);
 		}
 
