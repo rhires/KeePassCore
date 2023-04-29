@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.33328.57
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeePassLib", "KeePassLib\KeePassLib.csproj", "{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeePass", "KeePass\KeePass.csproj", "{10938016-DEE2-4A25-9A5A-8FD3444379CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeePassCore", "KeePass\KeePassCore.csproj", "{10938016-DEE2-4A25-9A5A-8FD3444379CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrlUtil", "Translation\TrlUtil\TrlUtil.csproj", "{B7E890E7-BF50-4450-9A52-C105BD98651C}"
 EndProject
